@@ -1,0 +1,1 @@
+SELECT * FROM account_statuses ORDER BY id ASC LIMIT 100;

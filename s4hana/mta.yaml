@@ -1,0 +1,59 @@
+ID: live
+_schema-version: '2.0'
+version: 0.0.1
+modules:
+  - name: ui
+    type: html5
+    path: ui
+    requires:
+      - name: UAA-service
+      - name: core_xsjs_api
+        group: destinations
+        properties:
+          name: core-xsjs-backend
+          url: '~{url}'
+          forwardAuthToken: true
+      - name: node_api
+        group: destinations
+        properties:
+          name: node_be
+          url: '~{url}'
+          forwardAuthToken: true
+  - name: db
+    type: hdb
+    path: db
+    requires:
+      - name: hdi_db
+  - name: core_xsjs
+    type: nodejs
+    path: core_xsjs
+    provides:
+      - name: core_xsjs_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: hdi_db
+      - name: db
+      - name: UAA-service
+  - name: node
+    type: nodejs
+    path: node
+    provides:
+      - name: node_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: hdi_db
+      - name: UAA-service
+resources:
+  - name: hdi_db
+    parameters:
+      config:
+        schema: ext
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: UAA-service
+    type: com.sap.xs.uaa-space
+  - name: jobScheduler
+    type: com.sap.xs.job-scheduler

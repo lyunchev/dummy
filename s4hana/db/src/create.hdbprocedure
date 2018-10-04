@@ -1,0 +1,20 @@
+PROCEDURE "s4hana.db::createTransaction" ( IN id integer )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   --READS SQL DATA 
+   AS
+   
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   declare noc integer;
+   --select count(*)  into noc from  "PurchaseOrder.Header" where id=8888;
+   if :noc = 0 then
+		--ex_error := 'ERROR: Continent ' || :im_continent || ' does not exist!';
+	else
+		INSERT INTO "s4hana.db::tables.aggr_settlements" VALUES(
+	id);
+	end if;
+END

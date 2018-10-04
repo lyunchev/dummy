@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="s4hana.db::sumTransactions" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="sumTransactions"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="s4hana.db::tables.aggr_transactions">
+    <resourceUri>s4hana.db::tables.aggr_transactions</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="s4hana.db::tables.aggr_transactions">
+  <attributes>
+    <attribute id="event_type" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="event_type"/>
+      <keyMapping columnObjectName="tables.aggr_transactions" columnName="event_type"/>
+    </attribute>
+    <attribute id="acquirer_code" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="acquirer_code"/>
+      <keyMapping columnObjectName="tables.aggr_transactions" columnName="acquirer_code"/>
+    </attribute>
+    <attribute id="document_date" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="document_date"/>
+      <keyMapping columnObjectName="tables.aggr_transactions" columnName="document_date"/>
+    </attribute>
+    <attribute id="currency" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="currency"/>
+      <keyMapping columnObjectName="tables.aggr_transactions" columnName="currency"/>
+    </attribute>
+    <attribute id="country" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="country"/>
+      <keyMapping columnObjectName="tables.aggr_transactions" columnName="country"/>
+    </attribute>
+    <attribute id="transaction_status_id" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="transaction_status_id"/>
+      <keyMapping columnObjectName="tables.aggr_transactions" columnName="transaction_status_id"/>
+    </attribute>
+    <attribute id="transaction_event_status_id" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="transaction_event_status_id"/>
+      <keyMapping columnObjectName="tables.aggr_transactions" columnName="transaction_event_status_id"/>
+    </attribute>
+    <attribute id="payment_type" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="payment_type"/>
+      <keyMapping columnObjectName="tables.aggr_transactions" columnName="payment_type"/>
+    </attribute>
+    <attribute id="migrated_payleven_yn" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="migrated_payleven_yn"/>
+      <keyMapping columnObjectName="tables.aggr_transactions" columnName="migrated_payleven_yn"/>
+    </attribute>
+  
+    <attribute id="card_reader_id" order="15">
+      <descriptions defaultDescription="card_reader_id"/>
+      <keyMapping columnObjectName="tables.aggr_transactions" columnName="card_reader_id"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="event_amount" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="event_amount"/>
+      <measureMapping columnObjectName="tables.aggr_transactions" columnName="event_amount"/>
+    </measure>
+    <measure id="total_fee" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="total_fee"/>
+      <measureMapping columnObjectName="tables.aggr_transactions" columnName="total_fee"/>
+    </measure>
+    <measure id="fixed_fee" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="fixed_fee"/>
+      <measureMapping columnObjectName="tables.aggr_transactions" columnName="fixed_fee"/>
+    </measure>
+    <measure id="acceleration_fee" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="acceleration_fee"/>
+      <measureMapping columnObjectName="tables.aggr_transactions" columnName="acceleration_fee"/>
+    </measure>
+    <measure id="processing_fee" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="processing_fee"/>
+      <measureMapping columnObjectName="tables.aggr_transactions" columnName="processing_fee"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
